@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul Moyenne Étudiant</title>
+</head>
+<body>
+
+    <h2>Notes de l'étudiant</h2>
+
+    <form action="traitement.php" method="POST" >
+        <label>Nom de l'étudiant :</label><br>
+        <input type="text" name="nom" required><br><br>
+
+        <label>Note 1 :</label><br>
+        <input type="number" name="note1" min="0" max="20" required><br><br>
+
+        <label>Note 2 :</label><br>
+        <input type="number" name="note2" min="0" max="20" required><br><br>
+
+        <label>Note 3 :</label><br>
+        <input type="number" name="note3" min="0" max="20" required><br><br>
+
+        <button type="submit">Calculer</button>
+    </form>
+    
+</body>
+</html>
