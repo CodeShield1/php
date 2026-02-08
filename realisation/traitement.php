@@ -75,7 +75,6 @@
         exit("Accès interdit");
     }
 
-    /* 2️⃣ نفرض على user يعمّر كلشي (كود قصير) */
     $requiredFields = [
         "nom","prenom","date_naissance","filiere",
         "frontend1","frontend2",
