@@ -22,10 +22,46 @@
 
 
 
-    <br><br><br>
-    <p>moyenne :<?= $moyenne ?> </p>
-    <p>mention :<?=$mention ?> </p>
-    <p>decision :<?= $decision ?> </p>
+
+    <hr>
+
+
+
+    <h2>Tableau des notes</h2>
+    <table border="1">
+        <tr>
+            <th>Matière</th>
+            <th>Note 1</th>
+            <th>Note 2</th>
+        </tr>
+
+        <?php foreach ($notes as $matiere => $listeNotes): ?>
+        <tr>
+            <td><?= $matiere ?></td>
+            <td><?= $listeNotes[0] ?></td>
+            <td><?= $listeNotes[1] ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <h2>Moyenne générale</h2>
+    <h3><?= round($moyenne, 2) ?>/20</h3>
+
+    <h2>Mention</h2>
+    <p><?= $mention ?></p>
+
+    <h2>Décision finale</h2>
+    <strong><?= $decision ?></strong>
+
+    <br><br>
+    <a href="index.php">⬅ Retour au formulaire</a>
+
+
+
+
+
+
+
 
 
 
