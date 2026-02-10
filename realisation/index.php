@@ -1,125 +1,114 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Gestion des notes</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-    body {
-        font-family: Arial;
-        margin: 30px;
-    }
-
-    table {
-        border-collapse: collapse;
-        margin-top: 15px;
-    }
-
-    td,
-    th {
-        border: 1px solid #000;
-        padding: 8px;
-        text-align: center;
-    }
-
-    h2 {
-        margin-top: 30px;
-    }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
-
     <?php
-/* =========================
-   AFFICHAGE DES RÉSULTATS
-   ========================= */
-if (isset($moyenne)): 
-?>
-
-    <h1>Résultat Final</h1>
+      if (isset($moyenne)) {
+   
+    ?>
 
     <h2>Informations de l’étudiant</h2>
-    <ul>
-        <li><strong>Nom :</strong> <?= $etudiant["nom"] ?></li>
-        <li><strong>Prénom :</strong> <?= $etudiant["prenom"] ?></li>
-        <li><strong>Date de naissance :</strong> <?= $etudiant["date_naissance"] ?></li>
-        <li><strong>Filière :</strong> <?= $etudiant["filiere"] ?></li>
-    </ul>
+    <p><strong>Nom :</strong> <?= htmlspecialchars($etudiant["nom"]) ?></p>
+    <p><strong>Prénom :</strong> <?= htmlspecialchars($etudiant["prenom"]) ?></p>
+    <p><strong>Date de naissance :</strong> <?= htmlspecialchars($etudiant["date_naissance"]) ?></p>
+    <p><strong>Filière :</strong> <?= htmlspecialchars($etudiant["filiere"]) ?></p>
 
-    <h2>Tableau des notes</h2>
-    <table>
-        <tr>
-            <th>Matière</th>
-            <th>Note 1</th>
-            <th>Note 2</th>
-        </tr>
 
-        <?php foreach ($notes as $matiere => $listeNotes): ?>
-        <tr>
-            <td><?= $matiere ?></td>
-            <td><?= $listeNotes[0] ?></td>
-            <td><?= $listeNotes[1] ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
 
-    <h2>Moyenne générale</h2>
-    <p><?= round($moyenne, 2) ?>/20</p>
+    <br><br><br>
+    <p>moyenne :<?= $moyenne ?> </p>
+    <p>mention :<?=$mention ?> </p>
+    <p>decision :<?= $decision ?> </p>
 
-    <h2>Mention</h2>
-    <p><?= $mention ?></p>
 
-    <h2>Décision finale</h2>
-    <strong><?= $decision ?></strong>
 
-    <br><br>
-    <a href="index.php">⬅ Retour au formulaire</a>
+    <?php
+       } else{
+    ?> <h1>Formulaire Étudiant</h1>
 
-    <?php 
-/* =========================
-   FORMULAIRE
-   ========================= */
- else: 
-?>
+    <form action="traitement.php" method="POST">
 
-    <h1>Formulaire de saisie</h1>
+        <h3>Informations de l'étudiant</h3>
 
-    <form method="POST" action="traitement.php">
 
-        <h2>Informations étudiant</h2>
-        <input type="text" name="nom" placeholder="Nom" required><br><br>
-        <input type="text" name="prenom" placeholder="Prénom" required><br><br>
-        <input type="date" name="date_naissance" required><br><br>
-        <input type="text" name="filiere" placeholder="Filière" required><br><br>
+        <div>
+            <label for="nom">Nom : </label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
 
-        <h2>Notes</h2>
+        <br>
 
-        <strong>Frontend</strong><br>
-        <input type="number" name="frontend1" min="0" max="20" required>
-        <input type="number" name="frontend2" min="0" max="20" required><br><br>
+        <div> <label for="prenom">Prenom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+        </div>
 
-        <strong>Backend</strong><br>
-        <input type="number" name="backend1" min="0" max="20" required>
-        <input type="number" name="backend2" min="0" max="20" required><br><br>
+        <br>
+        <div>
+            <label for="date_naissance">date_naissance</label>
+            <input type="date" id="date_naissance" name=" date_naissance" required>
+        </div>
+        <br>
+        <div>
+            <label for="filiere">filiere</label>
+            <input type="text" id="filiere" name="filiere" required>
+        </div>
+        <hr>
 
-        <strong>Entreprenariat</strong><br>
-        <input type="number" name="entreprenariat1" min="0" max="20" required>
-        <input type="number" name="entreprenariat2" min="0" max="20" required><br><br>
+        <h3>Notes</h3>
 
-        <strong>Anglais</strong><br>
-        <input type="number" name="anglais1" min="0" max="20" required>
-        <input type="number" name="anglais2" min="0" max="20" required><br><br>
+        <table border="1" cellpadding="8">
+            <tr>
+                <th>Matière</th>
+                <th>Note 1</th>
+                <th>Note 2</th>
+            </tr>
 
-        <strong>Soft Skills</strong><br>
-        <input type="number" name="softskills1" min="0" max="20" required>
-        <input type="number" name="softskills2" min="0" max="20" required><br><br>
+            <tr>
+                <td>Frontend</td>
+                <td><input type="number" name="frontend1" min="0" max="20" step="0.01" required></td>
+                <td><input type="number" name="frontend2" min="0" max="20" step="0.01" required></td>
+            </tr>
 
-        <button type="submit">Envoyer</button>
+            <tr>
+                <td>Backend</td>
+                <td><input type="number" name="backend1" min="0" max="20" step="0.01" required></td>
+                <td><input type="number" name="backend2" min="0" max="20" step="0.01" required></td>
+            </tr>
+
+            <tr>
+                <td>Entreprenariat</td>
+                <td><input type="number" name="entreprenariat1" min="0" max="20" step="0.01" required></td>
+                <td><input type="number" name="entreprenariat2" min="0" max="20" step="0.01" required></td>
+            </tr>
+
+            <tr>
+                <td>Anglais</td>
+                <td><input type="number" name="anglais1" min="0" max="20" step="0.01" required></td>
+                <td><input type="number" name="anglais2" min="0" max="20" step="0.01" required></td>
+            </tr>
+
+            <tr>
+                <td>Soft Skills</td>
+                <td><input type="number" name="softskills1" min="0" max="20" step="0.01" required></td>
+                <td><input type="number" name="softskills2" min="0" max="20" step="0.01" required></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <button type="submit">Calculer la moyenne</button>
     </form>
 
-    <?php endif; ?>
+    <?php
+}
+?>
 
 </body>
 
