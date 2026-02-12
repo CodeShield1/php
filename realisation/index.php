@@ -88,7 +88,7 @@
         <br>
         <div>
             <label for="date_naissance">date_naissance</label>
-            <input type="date" id="date_naissance" name=" date_naissance" required>
+            <input type="date" id="date_naissance" name="date_naissance" required>
         </div>
         <br>
         <div>

@@ -31,12 +31,35 @@
         "filiere" => $_POST["filiere"]
     ];
 
+    // $notes = [
+    //     "Frontend" => [$_POST["frontend1"], $_POST["frontend2"] ],
+    //     "Backend" => [$_POST["backend1"], $_POST["backend2"]],
+    //     "Entreprenariat" => [$_POST["entreprenariat1"], $_POST["entreprenariat2"]],
+    //     "Anglais" => [$_POST["anglais1"], $_POST["anglais2"]],
+    //     "Soft Skills" => [$_POST["softskills1"], $_POST["softskills2"]]
+    // ];
+    
     $notes = [
-        "Frontend" => [$_POST["frontend1"], $_POST["frontend2"]],
-        "Backend" => [$_POST["backend1"], $_POST["backend2"]],
-        "Entreprenariat" => [$_POST["entreprenariat1"], $_POST["entreprenariat2"]],
-        "Anglais" => [$_POST["anglais1"], $_POST["anglais2"]],
-        "Soft Skills" => [$_POST["softskills1"], $_POST["softskills2"]]
+        "frontend" => [
+            "notes" => [$_POST["frontend1"], $_POST["frontend2"]],
+            "coef"  => 2
+        ],
+        "backend" => [
+            "notes" => [$_POST["backend1"], $_POST["backend2"]],
+            "coef"  => 3
+        ],
+        "entreprenariat" => [
+            "notes" => [$_POST["entreprenariat1"], $_POST["entreprenariat2"]],
+            "coef"  => 1
+        ],
+        "anglais" => [
+            "notes" => [$_POST["anglais1"], $_POST["anglais2"]],
+            "coef"  => 1
+        ],
+        "softskills" => [
+            "notes" => [$_POST["softskills1"], $_POST["softskills2"]],
+            "coef"  => 1
+        ]
     ];
 
    

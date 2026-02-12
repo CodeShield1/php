@@ -16,23 +16,45 @@
 
 
 
+    // function calculerMoyenneGenerale(array $notes): float|int {
+    //     $somme = 0;
+    //     $nombreNotes = 0;
+
+    //     foreach ($notes as $matiere => $notesMatiere) {
+    //         foreach ($notesMatiere as $note) {
+    //             $somme += $note;     
+    //             $nombreNotes++;      
+    //         }
+    //     }
+
+    //     if ($nombreNotes === 0) {
+    //         return 0; 
+    //     }
+
+    //     return $somme / $nombreNotes;
+    // }
+
+
     function calculerMoyenneGenerale(array $notes): float|int {
-        $somme = 0;
-        $nombreNotes = 0;
 
-        foreach ($notes as $matiere => $notesMatiere) {
-            foreach ($notesMatiere as $note) {
-                $somme += $note;     
-                $nombreNotes++;      
-            }
-        }
+    $sommePonderee = 0;
+    $totalCoef = 0;
 
-        if ($nombreNotes === 0) {
-            return 0; 
-        }
+    foreach ($notes as $matiere) {
 
-        return $somme / $nombreNotes;
+        $moyenneMatiere = array_sum($matiere["notes"]) / count($matiere["notes"]);
+
+        $sommePonderee += $moyenneMatiere * $matiere["coef"];
+
+        $totalCoef += $matiere["coef"];
     }
+
+    if ($totalCoef === 0) {
+        return 0;
+    }
+
+    return $sommePonderee / $totalCoef;
+}
 
 
     function getMention(float $moyenne): string {
